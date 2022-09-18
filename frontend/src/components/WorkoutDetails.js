@@ -1,4 +1,4 @@
-// destructure the workout from props in parent component Home
+// destructure the workout from props in parent component Home, so you dont need to use props.workout
 const WorkoutDetails = ({workout}) => {
     return ( 
         <div className="workout-details">
