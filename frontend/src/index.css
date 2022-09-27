@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* layout */
+/* create some global variables */
 :root {
-  --primary: #1aac83;
+  --primary: #d3d562;
   --error: #e7195a;
 }
 body {
@@ -38,7 +39,7 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
-.workout-details {
+.note-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
@@ -46,28 +47,28 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
-.workout-details h4 {
+.note-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
-.workout-details p {
+.note-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
-.workout-details span {
+.note-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: #aca6a6;
   padding: 6px;
   border-radius: 50%;
   color: #333;
 }
 
-/* new workout form */
+/* new note form */
 label, input {
   display: block;
 }
@@ -96,4 +97,7 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
 }
