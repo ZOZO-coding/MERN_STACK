@@ -1,4 +1,5 @@
 import { useNotesContext } from "../hooks/useNotesContext";
+import { Link } from "react-router-dom";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -23,7 +24,9 @@ const NoteDetails = ({ note }) => {
 
     return ( 
         <div className="note-details">
-            <h4>{note.title}</h4>
+            <Link to={'/' + note._id}>
+                <h4>{note.title}</h4>
+            </Link>
             <p><strong>Difficulty: </strong>{note.difficulty}</p>
             <p><strong>Leetcode Link: </strong>{note.link}</p>
             <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>

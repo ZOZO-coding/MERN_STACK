@@ -2,8 +2,9 @@ require('dotenv').config()
 
 const express = require('express');
 const mongoose = require('mongoose');
-// require the note routes from the routes folder
+// require the note, comment routes from the routes folder
 const noteRoutes = require('./routes/notes');
+const commentRoutes = require('./routes/comments');
 
 // express app
 const app = express();
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 // routes
 // when we fire a request of this specific route, then use the routes in noteRoutes
 app.use('/api/notes', noteRoutes)
+app.use('/api/comments', commentRoutes)
 
 // connect to DB, connect() returns a Promise
 mongoose.connect(process.env.MONG_URI, {useNewUrlParser: true, useUnifiedTopology: true})
