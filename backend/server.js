@@ -21,8 +21,8 @@ app.use((req, res, next) => {
 
 // routes
 // when we fire a request of this specific route, then use the routes in noteRoutes
-app.use('/api/notes', noteRoutes)
-app.use('/api/comments', commentRoutes)
+app.use('/', noteRoutes)
+app.use('/', commentRoutes)
 
 // connect to DB, connect() returns a Promise
 mongoose.connect(process.env.MONG_URI, {useNewUrlParser: true, useUnifiedTopology: true})

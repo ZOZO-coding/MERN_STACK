@@ -24,19 +24,14 @@ const NoteShow = () => {
         <div>
             <div className="note-show">
                 <h4>{note.title}</h4>
+                <h4>LeetCode Link: {note.link}</h4>
                 <p><strong>Difficulty: {note.difficulty}</strong></p>
                 <button>Edit</button>
-                
-                <form action="" className="comment-form">
-                    <label htmlFor=""></label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <input type="submit" value='Submit Comment'/>
-                </form>
 
             </div>
 
             <div className='comments-display'>
-
+                
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import NoteShow from './components/NoteShow';
+import Comments from './pages/Comments';
 
 function App() {
   return (
@@ -13,12 +14,16 @@ function App() {
         <div className="pages">
           <Routes>
             <Route 
-              path='/'
+              path='/api/notes'
               element={<Home />}
             />
             <Route 
-              path='/:id'
+              path='/api/notes/:id'
               element={<NoteShow />}
+            />
+            <Route 
+              path='/api/comments'
+              element={<Comments />}
             />
           </Routes>
         </div>

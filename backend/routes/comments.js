@@ -8,12 +8,12 @@ const {
 const commentRouter = express.Router()
 
 // get all comments
-commentRouter.get('/', getComments)
+commentRouter.get('/api/comments', getComments)
 
 // create a comment
-commentRouter.post('/', createComment)
+commentRouter.post('/api/comments', createComment)
 
 // delete a comment
-commentRouter.delete('/:id', deleteComment)
+commentRouter.delete('/api/comments/:id', deleteComment)
 
 module.exports = commentRouter;

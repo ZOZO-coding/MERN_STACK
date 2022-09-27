@@ -11,19 +11,19 @@ const {
 const router = express.Router()
 
 // GET all Notes
-router.get('/', getNotes)
+router.get('/api/notes', getNotes)
 
 // GET a single Note
-router.get('/:id', getNote)
+router.get('/api/notes/:id', getNote)
 
 // POSt a new Note
-router.post('/', createNote)
+router.post('/api/notes', createNote)
 
 // DELETE a new Note
-router.delete('/:id', deleteNote)
+router.delete('/api/notes/:id', deleteNote)
 
 // UPDATE a new Note
-router.patch('/:id', updateNote)
+router.patch('/api/notes/:id', updateNote)
 
 
 module.exports = router;
