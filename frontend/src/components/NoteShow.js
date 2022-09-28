@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 // <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>
 
+import { Link } from 'react-router-dom';
+
 const NoteShow = () => {
     const { id } = useParams();
     
@@ -26,12 +28,10 @@ const NoteShow = () => {
                 <h4>{note.title}</h4>
                 <h4>LeetCode Link: {note.link}</h4>
                 <p><strong>Difficulty: {note.difficulty}</strong></p>
-                <button>Edit</button>
+                <Link to={`/api/notes/${id}/edit`}>
+                    <button>Edit</button>
+                </Link>
 
-            </div>
-
-            <div className='comments-display'>
-                
             </div>
         </div>
     )

@@ -19,6 +19,10 @@ export const notesReducer = (state, action) => {
             return {
                 notes: state.notes.filter(note => note._id !== action.payload._id)
             }
+        case 'UPDATE_NOTE':
+            return {
+                note: action.payload
+            }
         default:
             return state
     }
@@ -27,7 +31,8 @@ export const notesReducer = (state, action) => {
 // the children represents the <App /> we wrapped in index.js, same as props.children n
 export const NotesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(notesReducer, {
-        notes: null
+        notes: null,
+        note: null
     })
 
     return (

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import NoteShow from './components/NoteShow';
 import Comments from './pages/Comments';
+import NoteEditForm from './components/NoteEditForm';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
             <Route 
               path='/api/notes/:id'
               element={<NoteShow />}
+            />
+            <Route 
+              path='/api/notes/:id/edit'
+              element={<NoteEditForm />}
             />
             <Route 
               path='/api/comments'

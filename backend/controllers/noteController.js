@@ -26,6 +26,24 @@ const getNote = async (req, res) => {
     res.status(200).json(note);
 }
 
+// get a note edit page
+const getNoteEdit = async (req, res) => {
+    const { id } = req.params;
+
+    // check the validity of the id, so that mongoose doesn't throw any errors
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such note'})
+    }
+
+    const note = await Note.findById(id);
+
+    if (!note) {
+        return res.status(404).json({error: 'No such note!'})
+    }
+
+    res.status(200).json(note);
+}
+
 // create new note
 const createNote = async (req, res) => {
     const {title, difficulty, link} = req.body;
@@ -100,6 +118,7 @@ module.exports = {
     createNote,
     getNotes,
     getNote,
+    getNoteEdit,
     deleteNote,
     updateNote
 }

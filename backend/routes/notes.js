@@ -3,6 +3,7 @@ const {
     createNote,
     getNotes,
     getNote,
+    getNoteEdit,
     deleteNote,
     updateNote
 } = require('../controllers/noteController')
@@ -12,6 +13,9 @@ const router = express.Router()
 
 // GET all Notes
 router.get('/api/notes', getNotes)
+
+// GET a single Note edit page
+router.get('/api/notes/:id/edit', getNoteEdit)
 
 // GET a single Note
 router.get('/api/notes/:id', getNote)

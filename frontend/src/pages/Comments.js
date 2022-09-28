@@ -1,7 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useCommentsContext } from '../hooks/useCommentsContext';
+
+//components
+import CommentDetails from "../components/CommentDetails";
+import CommentForm from "../components/CommentForm";
 
 const Comments = () => {
-    const [comments, setComments] = useState(null)
+    // const [comments, setComments] = useState(null)
+    const { comments, dispatch } = useCommentsContext()
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -9,19 +15,23 @@ const Comments = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setComments(json)
+                // setComments(json)
+                dispatch({type: 'SET_COMMENTS', payload: json})
             }
         }
-
         fetchComments();
-    }, [])
+        
+    }, [dispatch])
 
     return (
-        <div className="comments-container">
+        <div className="comments-page">
             <div className="comments">
                 { comments && comments.map((comment) => (
-                    <p key={comment._id}>{comment.body} -By {comment.username}</p>
+                    <CommentDetails key={comment._id} comment={comment}/>
                 ))}
+            </div>
+            <div>
+                <CommentForm />
             </div>
         </div>
     )

@@ -101,3 +101,44 @@ div.error {
 input.error {
   border: 1px solid var(--error);
 }
+
+/* comments page */
+.comments-page {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.comment-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.comment-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.comment-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.comment-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #aca6a6;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+.comment-details div {
+  position: absolute;
+  right: 40px;
+  top: 60px;
+}

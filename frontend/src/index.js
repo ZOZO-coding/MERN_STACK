@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { NotesContextProvider } from './context/NotesContext';
+import { CommentsContextProvider } from './context/CommentsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NotesContextProvider>
-      <App /> 
+      <CommentsContextProvider>
+        <App /> 
+      </CommentsContextProvider>
     </NotesContextProvider>
   </React.StrictMode>
 );
