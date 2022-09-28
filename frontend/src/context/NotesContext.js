@@ -19,10 +19,6 @@ export const notesReducer = (state, action) => {
             return {
                 notes: state.notes.filter(note => note._id !== action.payload._id)
             }
-        case 'UPDATE_NOTE':
-            return {
-                note: action.payload
-            }
         default:
             return state
     }
@@ -32,7 +28,6 @@ export const notesReducer = (state, action) => {
 export const NotesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(notesReducer, {
         notes: null,
-        note: null
     })
 
     return (
