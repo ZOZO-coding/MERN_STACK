@@ -15,3 +15,5 @@ todoRouter.post('/api/todos', createTodo)
 
 // delete a todo
 todoRouter.delete('/api/todos/:id', deleteTodo)
+
+module.exports = todoRouter;

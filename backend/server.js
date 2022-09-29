@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // require the note, comment routes from the routes folder
 const noteRoutes = require('./routes/notes');
 const commentRoutes = require('./routes/comments');
+const todoRoutes = require('./routes/todos');
 
 // express app
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 // when we fire a request of this specific route, then use the routes in noteRoutes
 app.use('/', noteRoutes)
 app.use('/', commentRoutes)
+app.use('/', todoRoutes)
 
 // connect to DB, connect() returns a Promise
 mongoose.connect(process.env.MONG_URI, {useNewUrlParser: true, useUnifiedTopology: true})

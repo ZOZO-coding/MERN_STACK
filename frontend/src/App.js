@@ -26,7 +26,7 @@ function App() {
             <Route path='/api/comments' element={<Comments />}/>
 
             {/* routes for todo list */}
-            <Route path='api/todos' element={<Todos />} />
+            <Route path='/api/todos' element={<Todos />} />
             
           </Routes>
         </div>

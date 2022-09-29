@@ -6,6 +6,7 @@ const TodoForm = () => {
 
     const [item, setItem] = useState('')
     const [priority, setPriority] = useState('')
+    const [error, setError] = useState(null)
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -24,7 +25,18 @@ const TodoForm = () => {
         })
 
         const json = await response.json();
-        
+
+        if (!response.ok) {
+            setError(json.error)
+        }
+
+        if (response.ok) {
+            // reset the form
+            setItem('')
+            setPriority('')
+            dispatch({type: 'CREATE_TODO', payload: json})
+        }
+
     }
 
     return (

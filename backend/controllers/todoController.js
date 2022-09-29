@@ -1,4 +1,4 @@
-import ToDo from '../models/ToDoModel.js'
+const ToDo = require('../models/ToDoModel')
 const mongoose = require('mongoose');
 
 // get all comments
@@ -10,18 +10,11 @@ const getTodos = async (req, res) => {
 
 // crete a comment
 const createTodo = async (req, res) => {
-    const { item, isComplete, priority } = req.body;
-
-    // toggle isComplete to boolean
-    if (isComplete === 'on') {
-        isComplete = true;
-    } else {
-        isComplete = false;
-    }
+    const { item, priority } = req.body;
     
     try {
         // create a new comment using async func
-        const todo = await ToDo.create({item, isComplete, priority});
+        const todo = await ToDo.create({item, priority});
         res.status(200).json(todo)
     } catch(error) {
         res.status(400).json({error: error.message})

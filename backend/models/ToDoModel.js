@@ -4,12 +4,14 @@ const Schema = mongoose.Schema;
 
 // define our Schema
 const todoSchema = new Schema({
-    item: String, 
-    isComplete: {
-        type: Boolean,
-        default: false
+    item: {
+        type: String,
+        required: true
     },
-    priority: String
+    priority: {
+        type: String,
+        required: true
+    }
 }, {timestamps: true})
 
 // make a model based on the schema, we can then use the model to interact with the collection in the database
