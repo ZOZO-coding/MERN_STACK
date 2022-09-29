@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useCommentsContext } from '../hooks/useCommentsContext';
 
 //components
-import CommentDetails from "../components/CommentDetails";
+import CommentDetails from "../components/Comment/CommentDetails";
 import CommentForm from "../components/CommentForm";
 
 const Comments = () => {

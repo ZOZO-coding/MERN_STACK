@@ -7,7 +7,7 @@ const todoSchema = new Schema({
     item: String, 
     isComplete: {
         type: Boolean,
-        default: true
+        default: false
     },
     priority: String
 }, {timestamps: true})

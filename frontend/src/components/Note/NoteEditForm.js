@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NoteEditForm = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [note, setNote] = useState({});
     const [title, setTitle] = useState(note.title)
@@ -41,7 +43,7 @@ const NoteEditForm = () => {
         if (response.ok) {
             // redirect to note show page
             setError(null)
-            
+            navigate('/api/notes/' + id)
         }
     }
 
@@ -72,8 +74,8 @@ const NoteEditForm = () => {
                 // value={link} 
                 defaultValue={note.link}
             />
-
             <button>Edit</button>
+            
         </form>
     )
 }

@@ -1,4 +1,4 @@
-import { useCommentsContext } from "../hooks/useCommentsContext";
+import { useCommentsContext } from "../../hooks/useCommentsContext";
 
 const CommentDetails = ({ comment }) => {
     const { dispatch } = useCommentsContext()

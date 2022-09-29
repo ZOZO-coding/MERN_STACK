@@ -1,4 +1,4 @@
-import { useNotesContext } from "../hooks/useNotesContext";
+import { useNotesContext } from "../../hooks/useNotesContext";
 import { Link } from "react-router-dom";
 
 // date fns

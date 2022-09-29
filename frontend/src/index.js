@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import { NotesContextProvider } from './context/NotesContext';
 import { CommentsContextProvider } from './context/CommentsContext';
+import { TodosContextProvider } from './context/TodosContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NotesContextProvider>
       <CommentsContextProvider>
-        <App /> 
+        <TodosContextProvider>
+          <App /> 
+        </TodosContextProvider>
       </CommentsContextProvider>
     </NotesContextProvider>
   </React.StrictMode>

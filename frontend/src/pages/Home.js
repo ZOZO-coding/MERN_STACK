@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
 
 // components
-import NoteDetails from '../components/NoteDetails'
-import NoteForm from "../components/NoteForm";
+import NoteDetails from '../components/Note/NoteDetails'
+import NoteForm from "../components/Note/NoteForm";
 
 const Home = () => {
     const { notes, dispatch } = useNotesContext()

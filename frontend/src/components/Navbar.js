@@ -10,6 +10,9 @@ const Navbar = () => {
                 <Link to='/api/comments'>
                     <h3>General Comments</h3>
                 </Link>
+                <Link to='/api/todos'>
+                    <h3>To Do List</h3>
+                </Link>
             </div>
         </header>
      );

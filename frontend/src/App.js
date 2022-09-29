@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import NoteShow from './components/NoteShow';
 import Comments from './pages/Comments';
 import NoteEditForm from './components/NoteEditForm';
+import Todos from './pages/Todos';
 
 function App() {
   return (
@@ -14,22 +15,19 @@ function App() {
       <Navbar />
         <div className="pages">
           <Routes>
-            <Route 
-              path='/api/notes'
-              element={<Home />}
-            />
-            <Route 
-              path='/api/notes/:id'
-              element={<NoteShow />}
-            />
-            <Route 
-              path='/api/notes/:id/edit'
-              element={<NoteEditForm />}
-            />
-            <Route 
-              path='/api/comments'
-              element={<Comments />}
-            />
+            {/* routes for notes */}
+            <Route path='/api/notes'>
+              <Route index element={<Home />}/>
+              <Route path=':id' element={<NoteShow />}/>
+              <Route path=':id/edit' element={<NoteEditForm />}/>
+            </Route>
+            
+            {/* routes for comments */}
+            <Route path='/api/comments' element={<Comments />}/>
+
+            {/* routes for todo list */}
+            <Route path='api/todos' element={<Todos />} />
+            
           </Routes>
         </div>
       </BrowserRouter>

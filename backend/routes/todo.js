@@ -11,7 +11,7 @@ const todoRouter = express.Router()
 todoRouter.get('/api/todos', getTodos)
 
 // create a todo
-todoRouter.post('/api/todo', createTodo)
+todoRouter.post('/api/todos', createTodo)
 
 // delete a todo
-todoRouter.delete('/api/todo/:id', deleteTodo)
+todoRouter.delete('/api/todos/:id', deleteTodo)
