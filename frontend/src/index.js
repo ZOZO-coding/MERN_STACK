@@ -5,17 +5,20 @@ import App from './App';
 import { NotesContextProvider } from './context/NotesContext';
 import { CommentsContextProvider } from './context/CommentsContext';
 import { TodosContextProvider } from './context/TodosContext';
+import { AuthContextProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <NotesContextProvider>
-      <CommentsContextProvider>
-        <TodosContextProvider>
-          <App /> 
-        </TodosContextProvider>
-      </CommentsContextProvider>
-    </NotesContextProvider>
+    <AuthContextProvider>
+      <NotesContextProvider>
+        <CommentsContextProvider>
+          <TodosContextProvider>
+            <App /> 
+          </TodosContextProvider>
+        </CommentsContextProvider>
+      </NotesContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
