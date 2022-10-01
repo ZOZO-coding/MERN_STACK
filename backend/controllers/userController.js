@@ -5,13 +5,13 @@ const jwt = require('jsonwebtoken');
 // this function is going to return the token
 const createToken = (_id) => {
     // second argument is the "secret(check the docs if you forgot what secret it is)", we store it in the enviroment file
-    return jwt.sign({_id: _id}, process.env.SECRET, { expiresIn: '3d'})
+    return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d'})
 }
 
 // login user
 const loginUser = async (req, res) => { 
     const { email, password } = req.body;
-
+    console.log(req.headers);
     try {
         const user = await User.login(email, password)
         

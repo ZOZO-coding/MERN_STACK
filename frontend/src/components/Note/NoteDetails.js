@@ -1,5 +1,6 @@
 import { useNotesContext } from "../../hooks/useNotesContext";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -7,11 +8,19 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 // destructure the note from props in parent component Home, so you dont need to use props.note
 const NoteDetails = ({ note }) => {
     const { dispatch } = useNotesContext();
+    const { user } = useAuthContext();
+
+    if (!user) {
+        return
+    }
 
     const handleClick = async () => {
         // delete the note from database
         const response = await fetch('/api/notes/' + note._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         // json would be the reponse we just deleted
         const json = await response.json();

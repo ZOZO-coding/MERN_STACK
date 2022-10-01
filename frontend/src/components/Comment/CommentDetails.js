@@ -1,12 +1,22 @@
 import { useCommentsContext } from "../../hooks/useCommentsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 
 const CommentDetails = ({ comment }) => {
     const { dispatch } = useCommentsContext()
+    const { user } = useAuthContext();
+
+    if (!user) {
+        return
+    }
 
     const handleClick = async () => {
         // delete the comment
         const response = await fetch('/api/comments/' + comment._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         
         const json = await response.json();

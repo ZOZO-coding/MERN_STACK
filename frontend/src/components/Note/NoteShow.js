@@ -3,18 +3,25 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAuthContext } from '../../hooks/useAuthContext';
 // <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>
 
 import { Link } from 'react-router-dom';
 
 const NoteShow = () => {
     const { id } = useParams();
+
+    const { user } = useAuthContext();
     
     const [note, setNote] = useState({});
 
     useEffect(() => {
         const fetchNote = async () => {
-            const response = await fetch(`/api/notes/${id}`)
+            const response = await fetch(`/api/notes/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
             setNote(json)
         }

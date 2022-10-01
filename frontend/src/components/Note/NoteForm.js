@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNotesContext } from "../../hooks/useNotesContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const NoteForm = () => {
     const { dispatch } = useNotesContext();
+
+    const { user } = useAuthContext();
 
     const [title, setTitle] = useState('')
     const [difficulty, setDifficulty] = useState('')
@@ -13,6 +16,11 @@ const NoteForm = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         // create a dummy note object to send as the body of the request
         const note = {title, difficulty, link}
 
@@ -22,7 +30,8 @@ const NoteForm = () => {
             // stringify changes the note object to a json string
             body:JSON.stringify(note),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         // why this line? because we are getting json back from our server route

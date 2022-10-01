@@ -5,7 +5,12 @@ const {
     deleteTodo
 } = require('../controllers/todoController')
 
+// require the authentication middleware 
+const requireAuth = require ('../middleware/requireAuth')
+
 const todoRouter = express.Router()
+
+// fire the middleware function before all below routes, we want to "protect" these routes, this middleware is going to ensure that
 
 // get all todos
 todoRouter.get('/api/todos', getTodos)

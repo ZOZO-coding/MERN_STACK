@@ -8,8 +8,14 @@ const {
     updateNote
 } = require('../controllers/noteController')
 
+// require the authentication middleware 
+const requireAuth = require ('../middleware/requireAuth')
+
 // create an instance of express Router class
 const router = express.Router()
+
+// fire the middleware function before all below routes, we want to "protect" these routes, this middleware is going to ensure that
+// router.use(requireAuth)
 
 // GET all Notes
 router.get('/api/notes', getNotes)

@@ -160,6 +160,7 @@ nav button {
   font-family: "Roboto";
   cursor: pointer;
   font-size: 1em;
+  margin-left: 10px;
 }
 /* auth forms */
 form.signup, form.login {

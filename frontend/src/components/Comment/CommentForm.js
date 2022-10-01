@@ -1,13 +1,19 @@
 import { useState } from "react"
 import { useCommentsContext } from "../hooks/useCommentsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 const CommentForm = () => {
     const { dispatch } = useCommentsContext();
+    const { user } = useAuthContext();
 
     const [body, setBody] = useState('');
     const [username, setUsername] = useState('');
     const [error, setError] = useState(null)
+
+    if (!user) {
+        return
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +27,8 @@ const CommentForm = () => {
             // stringify changes the note object to a json string to meet the body requirement
             body:JSON.stringify(comment),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         // now through the server, we are getting a json back, so we need to use .json()

@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const NoteEditForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+
+    const { user } = useAuthContext();
 
     const [note, setNote] = useState({});
     const [title, setTitle] = useState(note.title)
@@ -14,7 +17,11 @@ const NoteEditForm = () => {
 
     useEffect(() => {
         const fetchNote = async () => {
-            const response = await fetch(`/api/notes/${id}`)
+            const response = await fetch(`/api/notes/${id}`, {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
             setNote(json)
         }
@@ -31,7 +38,8 @@ const NoteEditForm = () => {
             method: 'PATCH',
             body: JSON.stringify(note),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
@@ -75,6 +83,7 @@ const NoteEditForm = () => {
                 defaultValue={note.link}
             />
             <button>Edit</button>
+            {error && <div className="error">{error}</div>}
             
         </form>
     )

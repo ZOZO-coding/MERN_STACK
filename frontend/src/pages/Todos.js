@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTodosContext } from '../hooks/useTodosContext';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // components
 import TodoForm from  '../components/Todos/TodoForm';
@@ -8,10 +9,16 @@ import TodoItem from '../components/Todos/TodoItem';
 const Todos = () => {
     const { todos, dispatch } = useTodosContext()
 
+    const { user } = useAuthContext()
+
     useEffect(() => {
         // fetch all todo items
         const fetchTodos = async () => {
-            const response = await fetch('/api/todos')
+            const response = await fetch('/api/todos', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -19,9 +26,12 @@ const Todos = () => {
                 dispatch({type: 'SET_TODOS', payload: json})
             }
         }
-        fetchTodos()
+
+        if (user) {
+            fetchTodos()
+        }
         
-    }, [dispatch])
+    }, [dispatch, user])
 
     return (
         <div className="todos-page">

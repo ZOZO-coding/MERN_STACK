@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useCommentsContext } from '../hooks/useCommentsContext';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 //components
 import CommentDetails from "../components/Comment/CommentDetails";
@@ -9,9 +10,15 @@ const Comments = () => {
     // const [comments, setComments] = useState(null)
     const { comments, dispatch } = useCommentsContext()
 
+    const { user } = useAuthContext()
+
     useEffect(() => {
         const fetchComments = async () => {
-            const response = await fetch('/api/comments')
+            const response = await fetch('/api/comments', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -19,9 +26,12 @@ const Comments = () => {
                 dispatch({type: 'SET_COMMENTS', payload: json})
             }
         }
-        fetchComments();
+
+        if (user) {
+            fetchComments();
+        }
         
-    }, [dispatch])
+    }, [dispatch, user])
 
     return (
         <div className="comments-page">

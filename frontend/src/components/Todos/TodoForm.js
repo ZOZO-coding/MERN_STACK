@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useTodosContext } from "../../hooks/useTodosContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const TodoForm = () => {
     const { dispatch } = useTodosContext();
+
+    const { user } = useAuthContext();
 
     const [item, setItem] = useState('')
     const [priority, setPriority] = useState('')
@@ -10,6 +13,10 @@ const TodoForm = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+        if (!user) {
+            return
+        }
 
         // create a todo single item object
         const todo = {item, priority}
@@ -20,7 +27,8 @@ const TodoForm = () => {
             // stringify the object into json string
             body: JSON.stringify(todo),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 

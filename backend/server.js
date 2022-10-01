@@ -8,6 +8,8 @@ const commentRoutes = require('./routes/comments');
 const todoRoutes = require('./routes/todos');
 const userRoutes = require('./routes/user')
 
+const requireAuth = require('./middleware/requireAuth')
+
 // express app
 const app = express();
 
@@ -21,12 +23,19 @@ app.use((req, res, next) => {
     next();
 })
 
+
+
+app.use('/', userRoutes)
+
+// auth middleware
+app.use(requireAuth)
+
 // routes
 // when we fire a request of this specific route, then use the routes in noteRoutes
 app.use('/', noteRoutes)
 app.use('/', commentRoutes)
 app.use('/', todoRoutes)
-app.use('/', userRoutes)
+
 
 // connect to DB, connect() returns a Promise
 mongoose.connect(process.env.MONG_URI, {useNewUrlParser: true, useUnifiedTopology: true})
