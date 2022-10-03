@@ -1,6 +1,9 @@
 import { useCommentsContext } from "../../hooks/useCommentsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+// date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 
 const CommentDetails = ({ comment }) => {
     const { dispatch } = useCommentsContext()
@@ -33,8 +36,10 @@ const CommentDetails = ({ comment }) => {
                 <p key={comment._id}>{comment.body}</p>
             </blockquote>
             <div>
-                <p>By - {comment.username}</p>    
+                <p>By - {comment.username}</p>
+                <p>{formatDistanceToNow(new Date(comment.createdAt), {addSuffix: true})}</p>    
             </div>
+            
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
 
         </div>

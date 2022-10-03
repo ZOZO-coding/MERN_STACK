@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 
 // get all notes
 const getNotes = async (req, res) => {
+    // if you need to only show the notes created by one user
+    // const user_id = req.user._id
+    // then add "user_id" inside the curly braces
+
     const notes = await Note.find({}).sort({createdAt: -1})
 
     res.status(200).json(notes);
@@ -65,8 +69,10 @@ const createNote = async (req, res) => {
 
     // add doc to db
     try {
+        // from the requireAuth middleware, we attached user to req, and that user has a _id property, so we can use that property here to relate each note to a specific user
+        const user_id = req.user._id;
         // create a new note, .create() is asynchronous, so we need to change the callback function to async func
-        const note = await Note.create({title, difficulty, link});
+        const note = await Note.create({title, difficulty, link, user_id});
         // now we have the note object
         res.status(200).json(note)
     } catch (error) {

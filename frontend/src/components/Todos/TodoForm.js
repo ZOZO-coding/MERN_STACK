@@ -49,7 +49,7 @@ const TodoForm = () => {
 
     return (
         <form className="create-todo-form" onSubmit={handleSubmit}>
-            <label>To Do Item:</label>
+            <label style={{textAlign:'center'}}>Add a To-Do Item:</label>
             <input 
                 type="text" 
                 onChange={(e) => {setItem(e.target.value)}}
@@ -59,7 +59,7 @@ const TodoForm = () => {
             <fieldset style={{display: "flex"}}>
                 <legend>Priority</legend>
 
-                <label>high</label>
+                <label style={{color:'red'}}>high</label>
                 <input 
                     type="radio" 
                     id="high" 
@@ -68,7 +68,7 @@ const TodoForm = () => {
                     value='high'
                 />
 
-                <label>mid</label>
+                <label style={{color:'purple'}}>mid</label>
                 <input 
                     type="radio" 
                     id="mid" 
@@ -77,7 +77,7 @@ const TodoForm = () => {
                     value='mid'
                 />
 
-                <label>low</label>
+                <label style={{color:'green'}}>low</label>
                 <input 
                     type="radio" 
                     id="low" 
@@ -87,7 +87,7 @@ const TodoForm = () => {
                 />
             </fieldset>
 
-            <button>Add</button>
+            <button style={{padding: '5px 20px'}}>Add</button>
         </form>
     )
 }

@@ -9,7 +9,7 @@ const {
 } = require('../controllers/noteController')
 
 // require the authentication middleware 
-const requireAuth = require ('../middleware/requireAuth')
+// const requireAuth = require ('../middleware/requireAuth')
 
 // create an instance of express Router class
 const router = express.Router()

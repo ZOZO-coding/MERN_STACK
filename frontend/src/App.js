@@ -25,8 +25,8 @@ function App() {
             {/* routes for notes */}
             <Route path='/api/notes'>
               <Route index element={user ? <Home /> : <Navigate to='/api/user/login'/>}/>
-              <Route path=':id' element={<NoteShow />}/>
-              <Route path=':id/edit' element={<NoteEditForm />}/>
+              <Route path=':id' element={user ? <NoteShow /> : <Navigate to='/api/user/login'/>}/>
+              <Route path=':id/edit' element={user ? <NoteEditForm /> : <Navigate to='/api/user/login'/>}/>
             </Route>
             
             {/* routes for comments */}

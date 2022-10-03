@@ -68,6 +68,18 @@ header a {
   color: #333;
 }
 
+.note-show button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Roboto";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+
 /* new note form */
 label, input {
   display: block;
@@ -139,8 +151,8 @@ input.error {
 }
 .comment-details div {
   position: absolute;
-  right: 40px;
-  top: 60px;
+  left: 75%;
+  top: 50%;
 }
 
 /* navbar */
@@ -169,4 +181,49 @@ form.signup, form.login {
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+/* to do list items */
+.todo-details {
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.todo-details span {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  background: #aca6a6;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+.todo-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.todo-details p:hover{
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+/* to do list form */
+.create-todo-form {
+  position: relative;
+}
+
+.create-todo-form input{
+  margin: 5px;
+}
+.create-todo-form button{
+  margin: 5px auto;
+  position: absolute;
+  left: 45%;
+  font-size: 1em;
 }

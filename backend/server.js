@@ -26,14 +26,16 @@ app.use((req, res, next) => {
 
 
 app.use('/', userRoutes)
+app.use('/', commentRoutes)
+app.use('/', noteRoutes)
 
 // auth middleware
 app.use(requireAuth)
 
 // routes
 // when we fire a request of this specific route, then use the routes in noteRoutes
-app.use('/', noteRoutes)
-app.use('/', commentRoutes)
+
+
 app.use('/', todoRoutes)
 
 
