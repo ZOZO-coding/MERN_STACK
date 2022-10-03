@@ -10,6 +10,7 @@ const NoteForm = () => {
     const [title, setTitle] = useState('')
     const [difficulty, setDifficulty] = useState('')
     const [link, setLink] = useState('')
+    // const [content, setContent] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
@@ -44,11 +45,12 @@ const NoteForm = () => {
 
         if (response.ok) {
             // reset the form
-            setEmptyFields([])
-            setError(null)
             setTitle('')
             setDifficulty('')
             setLink('')
+            setError(null)
+            setEmptyFields([])
+            // setContent('')
             dispatch({type: 'CREATE_NOTE', payload: json})
         }
     }
@@ -62,7 +64,7 @@ const NoteForm = () => {
                 type="text"
                 onChange={(e) => {setTitle(e.target.value)}}
                 value={title} 
-                className={emptyFields.includes('title') ? 'error' : ''}
+                className={(emptyFields).includes('title') ? 'error' : ''}
             />
             
             <label>Difficulty:</label>
@@ -70,7 +72,7 @@ const NoteForm = () => {
                 type="text"
                 onChange={(e) => {setDifficulty(e.target.value)}}
                 value={difficulty} 
-                className={emptyFields.includes('difficulty') ? 'error' : ''}
+                className={(emptyFields).includes('difficulty') ? 'error' : ''}
             />
 
             <label>Leetcode Link:</label>
@@ -78,8 +80,16 @@ const NoteForm = () => {
                 type="text"
                 onChange={(e) => {setLink(e.target.value)}}
                 value={link} 
-                className={emptyFields.includes('link') ? 'error' : ''}
+                className={(emptyFields).includes('link') ? 'error' : ''}
             />
+
+            {/* <label>Content</label>
+            <textarea 
+                onChange={(e) => {setContent(e.target.value)}}
+                value={content}
+                className={emptyFields.includes('content') ? 'error' : ''}
+            >
+            </textarea> */}
 
             <button>Add note</button>
             {error && <div className="error">{error}</div>}

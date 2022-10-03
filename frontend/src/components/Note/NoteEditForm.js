@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLocation } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -9,25 +9,30 @@ const NoteEditForm = () => {
 
     const { user } = useAuthContext();
 
-    const [note, setNote] = useState({});
+    const location = useLocation()
+    const { note } = location.state
+
+    // const [note, setNote] = useState({});
     const [title, setTitle] = useState(note.title)
     const [difficulty, setDifficulty] = useState(note.difficulty)
     const [link, setLink] = useState(note.link)
+    // const [content, setContent] = useState(note.content)
     const [error, setError] = useState(null)
 
-    useEffect(() => {
-        const fetchNote = async () => {
-            const response = await fetch(`/api/notes/${id}`, {
-                headers:{
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const json = await response.json()
-            setNote(json)
-        }
+
+    // useEffect(() => {
+    //     const fetchNote = async () => {
+    //         const response = await fetch(`/api/notes/${id}`, {
+    //             headers:{
+    //                 'Authorization': `Bearer ${user.token}`
+    //             }
+    //         })
+    //         const json = await response.json()
+    //         setNote(json)
+    //     }
     
-        fetchNote();
-    }, [])
+    //     fetchNote();
+    // }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -82,6 +87,15 @@ const NoteEditForm = () => {
                 // value={link} 
                 defaultValue={note.link}
             />
+
+            {/* <label>Content:</label>
+            <textarea 
+                cols="30" 
+                rows="10"
+                onChange={(e) => {setContent(e.target.value)}}
+                defaultValue={note.content}
+            ></textarea> */}
+
             <button>Edit</button>
             {error && <div className="error">{error}</div>}
             

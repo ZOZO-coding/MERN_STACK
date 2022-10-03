@@ -16,10 +16,6 @@ const noteSchema = new Schema({
         type: String,
         required: true
     },
-    user_id: {
-        type: String,
-        required: true
-    }
 }, {timestamps: true})
 
 // make a model based on the schema, we can then use the model to interact with the collection in the database

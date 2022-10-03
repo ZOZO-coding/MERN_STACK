@@ -1,27 +1,31 @@
 const ToDo = require('../models/ToDoModel')
 const mongoose = require('mongoose');
 
-// get all comments
+// get all todos
 const getTodos = async (req, res) => {
-    const todos = await ToDo.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const todos = await ToDo.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(todos);
 }
 
-// crete a comment
+// crete a todo item
 const createTodo = async (req, res) => {
     const { item, priority } = req.body;
     
     try {
-        // create a new comment using async func
-        const todo = await ToDo.create({item, priority});
+        // req.user_id is from the auth middleware
+        const user_id = req.user._id
+        // create a new todo using async func
+        const todo = await ToDo.create({item, priority, user_id});
         res.status(200).json(todo)
     } catch(error) {
         res.status(400).json({error: error.message})
     }
 }
 
-// delete a comment
+// delete a todo item
 const deleteTodo = async(req, res) => {
     const { id } = req.params;
 

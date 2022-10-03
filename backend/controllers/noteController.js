@@ -63,6 +63,9 @@ const createNote = async (req, res) => {
     if(!link) {
         emptyFields.push('link')
     }
+    // if(!content) {
+    //     emptyFields.push('content')
+    // }
     if(emptyFields.length > 0) {
         return res.status(400).json({error: 'Please fill in all fields', emptyFields})
     }
@@ -70,9 +73,9 @@ const createNote = async (req, res) => {
     // add doc to db
     try {
         // from the requireAuth middleware, we attached user to req, and that user has a _id property, so we can use that property here to relate each note to a specific user
-        const user_id = req.user._id;
+        // const user_id = req.user._id;
         // create a new note, .create() is asynchronous, so we need to change the callback function to async func
-        const note = await Note.create({title, difficulty, link, user_id});
+        const note = await Note.create({title, difficulty, link});
         // now we have the note object
         res.status(200).json(note)
     } catch (error) {
