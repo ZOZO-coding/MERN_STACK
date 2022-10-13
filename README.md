@@ -1,8 +1,8 @@
 # Build a MERN stack Personal Blog site with CRUD operations, to-do list and Auth.
 
-![Project Image]("C:\Users\Owner\Desktop\LoginSignupPage.png")
-![Project Image]("C:\Users\Owner\Desktop\MainPage.png")
-![Project Image]("C:\Users\Owner\Desktop\ToDoList.png")
+![Project Image]("./LoginSignupPage.png")
+![Project Image]("./MainPage.png")
+![Project Image]("./ToDoList.png")
 
 ### Main Features of the Application:
 - Full user Authentication and Login / Signup page.
