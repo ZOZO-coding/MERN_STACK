@@ -4,6 +4,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthContext } from '../../context/AuthContext';
+import { useLocation } from 'react-router-dom';
 // <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>
 
 import { Link } from 'react-router-dom';
@@ -47,7 +48,7 @@ const NoteShow = () => {
                 {/* <div>
                     Content: {note.content}
                 </div> */}
-                <Link to={`/api/notes/${id}/edit`} state={note}>
+                <Link to={`/api/notes/${note.id}/edit`} state={note}>
                     <button>Edit</button>
                 </Link>
 

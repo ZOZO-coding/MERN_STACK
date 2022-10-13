@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useCommentsContext } from "../hooks/useCommentsContext";
+import { useCommentsContext } from "../../hooks/useCommentsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 

@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 //components
 import CommentDetails from "../components/Comment/CommentDetails";
-import CommentForm from "../components/CommentForm";
+import CommentForm from "../components/Comment/CommentForm";
 
 const Comments = () => {
     // const [comments, setComments] = useState(null)

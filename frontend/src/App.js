@@ -4,9 +4,9 @@ import { useAuthContext } from './hooks/useAuthContext';
 // pages & components
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import NoteShow from './components/NoteShow';
+import NoteShow from './components/Note/NoteShow';
 import Comments from './pages/Comments';
-import NoteEditForm from './components/NoteEditForm';
+import NoteEditForm from './components/Note/NoteEditForm';
 import Todos from './pages/Todos';
 import Login from './pages/Login';
 import Signup from './pages/Signup';

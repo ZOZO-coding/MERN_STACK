@@ -14,7 +14,7 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to='/api/notes'>
-                    <h1>Zoey Coding</h1>
+                    <h1 style={{color: '#f9a825'}}>Zoey Coding</h1>
                 </Link>
                 <Link to='/api/comments'>
                     <h3>General Comments</h3>
