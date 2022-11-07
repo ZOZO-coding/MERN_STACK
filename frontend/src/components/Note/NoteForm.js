@@ -68,12 +68,18 @@ const NoteForm = () => {
             />
             
             <label>Difficulty:</label>
-            <input 
+            {/* <input 
                 type="text"
                 onChange={(e) => {setDifficulty(e.target.value)}}
                 value={difficulty} 
                 className={(emptyFields).includes('difficulty') ? 'error' : ''}
-            />
+            /> */}
+            <select onChange={(e) => {setDifficulty(e.target.value)}} value={difficulty} >
+                <option value="">Please choose a difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
 
             <label>Leetcode Link:</label>
             <input 

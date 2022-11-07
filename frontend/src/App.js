@@ -10,6 +10,7 @@ import NoteEditForm from './components/Note/NoteEditForm';
 import Todos from './pages/Todos';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import NoteForm from './components/Note/NoteForm';
 
 function App() {
   const { user } = useAuthContext();
@@ -23,11 +24,13 @@ function App() {
             <Route path='/' element={user ? <Home /> : <Navigate to='api/user/login'/>}/>
 
             {/* routes for notes */}
-            <Route path='/api/notes'>
+            <Route path='/api/notes/'>
               <Route index element={user ? <Home /> : <Navigate to='/api/user/login'/>}/>
               <Route path=':id' element={user ? <NoteShow /> : <Navigate to='/api/user/login'/>}/>
               <Route path=':id/edit' element={user ? <NoteEditForm /> : <Navigate to='/api/user/login'/>}/>
             </Route>
+            {/*  routes for adding a note */}
+            <Route path='/add' element={user ? <NoteForm /> : <Navigate to='/api/user/login'/>}/>
             
             {/* routes for comments */}
             <Route path='/api/comments' element={user ? <Comments /> : <Navigate to='/api/user/login'/>}/>

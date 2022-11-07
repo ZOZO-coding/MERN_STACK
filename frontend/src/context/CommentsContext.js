@@ -17,7 +17,7 @@ export const commentsReducer = (state, action) => {
             }
         case 'DELETE_COMMENT':
             return {
-                comments: state.comments.filter(comment => comment._id != action.payload._id)
+                comments: state.comments.filter(comment => comment._id !== action.payload._id)
             }
         default:
             return state

@@ -68,6 +68,15 @@ header a {
   color: #333;
 }
 
+/* note show page */
+.note-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px auto;
+  width: 500px;
+}
+
 .note-show button {
   background: #fff;
   color: var(--primary);
@@ -81,10 +90,27 @@ header a {
 }
 
 /* new note form */
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px auto;
+  width: 500px;
+}
+
 label, input {
   display: block;
 }
 input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -226,4 +252,22 @@ form.signup, form.login {
   position: absolute;
   left: 45%;
   font-size: 1em;
+}
+
+/* pagination footer */
+.pagination {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.pagination button {
+  font-size: 1.25rem;
+  margin: 5px 10px;
+  border-style: none;
+}
+.pagination .active {
+  background-color: var(--primary);
 }

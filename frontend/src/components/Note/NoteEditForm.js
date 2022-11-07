@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useState, useEffect, useLocation } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -9,10 +9,8 @@ const NoteEditForm = () => {
 
     const { user } = useAuthContext();
 
-    const location = useLocation()
-    const { note } = location.state
+    const [note, setNote] = useState({});
 
-    // const [note, setNote] = useState({});
     const [title, setTitle] = useState(note.title)
     const [difficulty, setDifficulty] = useState(note.difficulty)
     const [link, setLink] = useState(note.link)
@@ -20,19 +18,19 @@ const NoteEditForm = () => {
     const [error, setError] = useState(null)
 
 
-    // useEffect(() => {
-    //     const fetchNote = async () => {
-    //         const response = await fetch(`/api/notes/${id}`, {
-    //             headers:{
-    //                 'Authorization': `Bearer ${user.token}`
-    //             }
-    //         })
-    //         const json = await response.json()
-    //         setNote(json)
-    //     }
+    useEffect(() => {
+        const fetchNote = async () => {
+            const response = await fetch(`/api/notes/${id}`, {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+            setNote(json)
+        }
     
-    //     fetchNote();
-    // }, [])
+        fetchNote();
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

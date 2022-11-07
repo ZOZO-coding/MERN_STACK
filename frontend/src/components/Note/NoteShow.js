@@ -3,57 +3,52 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAuthContext } from '../../context/AuthContext';
-import { useLocation } from 'react-router-dom';
-// <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 import { Link } from 'react-router-dom';
 
 const NoteShow = () => {
-    // const { id } = useParams();
+    const { id } = useParams();
 
-    // const { user } = useAuthContext();
-    
-    // const [note, setNote] = useState({});
+    const { user } = useAuthContext();
 
-    // if (!user) {
-    //     console.log('no user found!')
-    //     return 'no user!'
-    // }
+    const [note, setNote] = useState({});
 
-    // useEffect(() => {
-    //     const fetchNote = async () => {
-    //         const response = await fetch(`/api/notes/${id}`, {
-    //             headers: {
-    //                 'Authorization': `Bearer ${user.token}`
-    //             }
-    //         })
-    //         console.log(user.token);
-    //         const json = await response.json()
-    //         setNote(json)
-    //     }
-    
-    //     fetchNote();
-    // }, [user])
+    if (!user) {
+        console.log('no user found!')
+        // return 'no user!'
+    }
 
-    const location = useLocation()
-    const { note } = location.state
+    useEffect(() => {
+        const fetchNote = async () => {
+            const response = await fetch(`/api/notes/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+            setNote(json)
+        }
+
+        fetchNote();
+    }, [user])
 
     return (
-        <div>
-            <div className="note-show">
-                <h4>{note.title}</h4>
-                <h4>LeetCode Link: {note.link}</h4>
-                <p><strong>Difficulty: {note.difficulty}</strong></p>
-                {/* <div>
+
+        <div className="note-show">
+            <h4>{note.title}</h4>
+            <h4>LeetCode Link: <a href={note.link} target="_blank" >{note.link}</a></h4>
+            <p><strong>Difficulty: {note.difficulty}</strong></p>
+            {/* <div>
                     Content: {note.content}
                 </div> */}
-                <Link to={`/api/notes/${note.id}/edit`} state={note}>
-                    <button>Edit</button>
-                </Link>
+            {/* <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p> */}
+            <Link to={`/api/notes/${id}/edit`} state={note}>
+                <button>Edit</button>
+            </Link>
 
-            </div>
         </div>
+
     )
 }
 
