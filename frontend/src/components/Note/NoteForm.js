@@ -10,7 +10,7 @@ const NoteForm = () => {
     const [title, setTitle] = useState('')
     const [difficulty, setDifficulty] = useState('')
     const [link, setLink] = useState('')
-    // const [content, setContent] = useState('')
+    const [content, setContent] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
@@ -23,7 +23,7 @@ const NoteForm = () => {
         }
 
         // create a dummy note object to send as the body of the request
-        const note = {title, difficulty, link}
+        const note = {title, difficulty, link, content}
 
         // use the fetch api to send the post request:
         const response = await fetch('/api/notes', {
@@ -50,7 +50,7 @@ const NoteForm = () => {
             setLink('')
             setError(null)
             setEmptyFields([])
-            // setContent('')
+            setContent('')
             dispatch({type: 'CREATE_NOTE', payload: json})
         }
     }
@@ -68,12 +68,6 @@ const NoteForm = () => {
             />
             
             <label>Difficulty:</label>
-            {/* <input 
-                type="text"
-                onChange={(e) => {setDifficulty(e.target.value)}}
-                value={difficulty} 
-                className={(emptyFields).includes('difficulty') ? 'error' : ''}
-            /> */}
             <select onChange={(e) => {setDifficulty(e.target.value)}} value={difficulty} >
                 <option value="">Please choose a difficulty</option>
                 <option value="Easy">Easy</option>
@@ -89,13 +83,12 @@ const NoteForm = () => {
                 className={(emptyFields).includes('link') ? 'error' : ''}
             />
 
-            {/* <label>Content</label>
+            <label>Content</label>
             <textarea 
                 onChange={(e) => {setContent(e.target.value)}}
                 value={content}
-                className={emptyFields.includes('content') ? 'error' : ''}
             >
-            </textarea> */}
+            </textarea>
 
             <button>Add note</button>
             {error && <div className="error">{error}</div>}

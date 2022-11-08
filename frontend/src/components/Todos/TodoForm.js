@@ -56,7 +56,7 @@ const TodoForm = () => {
                 value={item}
             />
 
-            <fieldset style={{display: "flex"}}>
+            <fieldset style={{display: "flex"}} className="todo-priority">
                 <legend>Priority</legend>
 
                 <label style={{color:'red'}}>high</label>

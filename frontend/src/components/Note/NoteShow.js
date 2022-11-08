@@ -39,14 +39,13 @@ const NoteShow = () => {
             <h4>{note.title}</h4>
             <h4>LeetCode Link: <a href={note.link} target="_blank" >{note.link}</a></h4>
             <p><strong>Difficulty: {note.difficulty}</strong></p>
-            {/* <div>
-                    Content: {note.content}
-                </div> */}
+            <div>
+                Tips: {note.content}
+            </div>
             {/* <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p> */}
-            <Link to={`/api/notes/${id}/edit`} state={note}>
+            <Link to={`/api/notes/${id}/edit`} state={note} className="edit-button">
                 <button>Edit</button>
             </Link>
-
         </div>
 
     )

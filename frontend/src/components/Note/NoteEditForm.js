@@ -14,7 +14,7 @@ const NoteEditForm = () => {
     const [title, setTitle] = useState(note.title)
     const [difficulty, setDifficulty] = useState(note.difficulty)
     const [link, setLink] = useState(note.link)
-    // const [content, setContent] = useState(note.content)
+    const [content, setContent] = useState(note.content)
     const [error, setError] = useState(null)
 
 
@@ -35,7 +35,7 @@ const NoteEditForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const note = {title, difficulty, link}
+        const note = {title, difficulty, link, content}
 
         const response = await fetch('/api/notes/' + id, {
             method: 'PATCH',
@@ -86,13 +86,13 @@ const NoteEditForm = () => {
                 defaultValue={note.link}
             />
 
-            {/* <label>Content:</label>
+            <label>Content:</label>
             <textarea 
                 cols="30" 
                 rows="10"
                 onChange={(e) => {setContent(e.target.value)}}
                 defaultValue={note.content}
-            ></textarea> */}
+            ></textarea>
 
             <button>Edit</button>
             {error && <div className="error">{error}</div>}

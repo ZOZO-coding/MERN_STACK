@@ -11,6 +11,7 @@ import Todos from './pages/Todos';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NoteForm from './components/Note/NoteForm';
+import Footer from './components/Footer';
 
 function App() {
   const { user } = useAuthContext();
@@ -44,6 +45,7 @@ function App() {
 
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

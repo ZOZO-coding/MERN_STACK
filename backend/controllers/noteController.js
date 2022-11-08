@@ -11,12 +11,21 @@ const getNotes = async (req, res) => {
     // the || is going to set the default page to page 0, the page query is from something like "localhost:3000/?page=1"
     // page * notesPerPage is going to be the number of notes skipped, where skip is a mongoose method, for example, if page is 1, we are going to skip 5 notes.
     const page = req.query.page || 1
+    const searchTerm = req.query.searchTerm || ""
     const notesPerPage = 5
+
+    let difficulty = req.query.difficulty || ''
+    // const difficulties = ["Easy", "Medium", "Hard"]
+    // difficulty === 'All' ? (difficulty = [...difficulties]) : (difficulty = req.query.difficulty)
+
+    const regexQuery = {
+        title: new RegExp(searchTerm, 'i'),
+        difficulty: new RegExp(difficulty)
+    }
 
     try {
         const total = await Note.countDocuments({})
-
-        const notes = await Note.find({})
+        const notes = await Note.find(regexQuery)
             .limit(notesPerPage)
             .skip((page - 1) * notesPerPage)
             .sort({ createdAt: -1 })
@@ -70,7 +79,7 @@ const getNoteEdit = async (req, res) => {
 
 // create new note
 const createNote = async (req, res) => {
-    const { title, difficulty, link } = req.body;
+    const { title, difficulty, link, content } = req.body;
 
     let emptyFields = []
 
@@ -95,7 +104,7 @@ const createNote = async (req, res) => {
         // from the requireAuth middleware, we attached user to req, and that user has a _id property, so we can use that property here to relate each note to a specific user
         // const user_id = req.user._id;
         // create a new note, .create() is asynchronous, so we need to change the callback function to async func
-        const note = await Note.create({ title, difficulty, link });
+        const note = await Note.create({ title, difficulty, link, content });
         // now we have the note object
         res.status(200).json(note)
     } catch (error) {

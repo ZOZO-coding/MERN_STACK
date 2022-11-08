@@ -57,18 +57,21 @@ const CommentForm = () => {
             <form className="comment-form" onSubmit={handleSubmit}>
                 <h3>Leave Your Daily Comment</h3>
 
-                <label>Username</label>
+                <label>Name</label>
                 <input 
                     type="text"
                     value={username}
                     onChange={e => {setUsername(e.target.value)}} 
+                    required
                 />
-
+                
+                <label>Comment</label>
                 <textarea 
-                    cols="30" 
-                    rows="10"
+                    cols="20" 
+                    rows="5"
                     value={body}
-                    onChange={e => {setBody(e.target.value)}}>
+                    onChange={e => {setBody(e.target.value)}}
+                    required>
                 </textarea>
 
                 <button>Post Your Comment</button>

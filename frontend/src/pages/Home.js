@@ -5,6 +5,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 // components
 import NoteDetails from '../components/Note/NoteDetails'
 import Pagination from "../components/Pagination";
+import Filter from "../components/Note/Filter";
 
 const Home = () => {
     const { notes, dispatch } = useNotesContext()
@@ -12,14 +13,24 @@ const Home = () => {
     const [page, setPage] = useState(1)
     const [pageCount, setPageCount] = useState(0)
 
+    const [difficulty, setDifficulty] = useState('')
+    const [searchTerm, setSearchTerm] = useState('')
+
     // get the user from auth context
     const { user } = useAuthContext()
+
+    // submit for search term
+    const handleSubmit = endpoint => e => {
+        e.preventDefault()
+
+        setSearchTerm(endpoint)
+    }
 
     // only fire once when page first renders
     useEffect(() => {
         const fetchNotes = async () => {
             // add authorization header
-            const response = await fetch(`/api/notes?page=${page}`, {
+            const response = await fetch(`/api/notes?page=${page}&searchTerm=${searchTerm}&difficulty=${difficulty}`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -36,18 +47,21 @@ const Home = () => {
             fetchNotes();
         }
 
-    }, [dispatch, user, page])
+    }, [dispatch, user, page, searchTerm, difficulty])
 
     return (
-        <div>
+        <div className="home-container">
             <div className="home">
                 <div className="notes">
                     {notes && notes.map((note) => (
                         <NoteDetails key={note._id} note={note} />
                     ))}
                 </div>
-                {/* <NoteForm /> */}
-                <h3>Add Filter</h3>
+                {/* replace this h3 with a filter component */}
+                <div>
+                    <Filter difficulty={difficulty} setDifficulty={setDifficulty} searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleSubmit={handleSubmit}/>
+                </div>
+
             </div>
 
             <Pagination page={page} pageCount={pageCount} setPage={setPage} setPageCount={setPageCount} />

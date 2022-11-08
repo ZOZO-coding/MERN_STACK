@@ -33,7 +33,7 @@ const NoteDetails = ({ note }) => {
 
     return ( 
         <div className="note-details">
-            <Link to={'/api/notes/' + note._id} state={note}>
+            <Link to={'/api/notes/' + note._id} state={note} className="note-title">
                 <h4>{note.title}</h4>
             </Link>
             <p><strong>Difficulty: </strong>{note.difficulty}</p>
