@@ -1,8 +1,10 @@
 # Build a MERN stack Personal Blog site with CRUD operations, to-do list and Auth.
 
 ![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1665669867/LoginSignupPage_jd2mqu.png)
-![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1665669867/MainPage_uo62tp.png)
-![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1665669867/ToDoList_pvnztx.png)
+![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1667941672/main-page_sm1jrg.png)
+![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1667941672/add-note_lmuafx.png)
+![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1667941672/comments_stsfyr.png)
+![Project Image](https://res.cloudinary.com/defqd6pxk/image/upload/v1667941672/todo_xtypbm.png)
 
 ### Main Features of the Application:
 - Full user Authentication and Login / Signup page.
