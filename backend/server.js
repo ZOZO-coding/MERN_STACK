@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan')
+const cors = require('cors')
 // require the note, comment routes from the routes folder
 const noteRoutes = require('./routes/notes');
 const commentRoutes = require('./routes/comments');
@@ -18,6 +19,9 @@ const app = express();
 // for any incoming request, below middleware will look at the data, parse the data and attach to the req object, like "req.body", similar middleware like express.urlencoded
 app.use(express.json())
 app.use(morgan("dev"));
+app.use(cors({
+    origin: "https://leetcode-study.onrender.com"
+}))
 
 // logger middleware - replaced by morgan
 // app.use((req, res, next) => {
