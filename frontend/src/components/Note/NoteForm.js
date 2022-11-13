@@ -34,7 +34,9 @@ const NoteForm = () => {
             body:JSON.stringify(note),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`,
+                'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
+                'Access-Control-Allow-Methods':'*'
             }
         })
         // why this line? because we are getting json back from our server route

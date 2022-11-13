@@ -30,7 +30,9 @@ const CommentForm = () => {
             body:JSON.stringify(comment),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`,
+                'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
+                'Access-Control-Allow-Methods':'*'
             }
         })
         // now through the server, we are getting a json back, so we need to use .json()

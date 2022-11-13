@@ -3,7 +3,7 @@ import { useTodosContext } from '../hooks/useTodosContext';
 import { useAuthContext } from "../hooks/useAuthContext";
 
 // components
-import TodoForm from  '../components/Todos/TodoForm';
+import TodoForm from '../components/Todos/TodoForm';
 import TodoItem from '../components/Todos/TodoItem';
 
 import { BASE_URL } from "../components/BASE"
@@ -18,28 +18,30 @@ const Todos = () => {
         const fetchTodos = async () => {
             const response = await fetch(`${BASE_URL}/api/todos`, {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`,
+                    'Access-Control-Allow-Origin': 'https://leetcode-study.onrender.com',
+                    'Access-Control-Allow-Methods': '*'
                 }
             })
             const json = await response.json()
 
             if (response.ok) {
                 // fire an action to the reducer to keep the front end state in sync
-                dispatch({type: 'SET_TODOS', payload: json})
+                dispatch({ type: 'SET_TODOS', payload: json })
             }
         }
 
         if (user) {
             fetchTodos()
         }
-        
+
     }, [dispatch, user])
 
     return (
         <div className="todos-page">
             <div className="todos">
                 {todos && todos.map((todo) => (
-                    <TodoItem key={todo._id} todo={todo}/>
+                    <TodoItem key={todo._id} todo={todo} />
                 ))}
             </div>
 

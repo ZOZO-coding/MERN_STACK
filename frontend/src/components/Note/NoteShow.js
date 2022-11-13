@@ -25,7 +25,9 @@ const NoteShow = () => {
         const fetchNote = async () => {
             const response = await fetch(`${BASE_URL}/api/notes/${id}`, {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`,
+                    'Access-Control-Allow-Origin': 'https://leetcode-study.onrender.com',
+                    'Access-Control-Allow-Methods': '*'
                 }
             })
             const json = await response.json()

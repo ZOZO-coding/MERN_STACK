@@ -21,7 +21,9 @@ const Comments = () => {
         const fetchComments = async () => {
             const response = await fetch(`${BASE_URL}/api/comments?page=${page}`, {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`,
+                    'Access-Control-Allow-Origin': 'https://leetcode-study.onrender.com',
+                    'Access-Control-Allow-Methods': '*'
                 }
             })
             const json = await response.json()

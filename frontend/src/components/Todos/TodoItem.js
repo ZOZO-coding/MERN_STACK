@@ -17,7 +17,9 @@ const TodoItem = ({ todo }) => {
         const response = await fetch(`${BASE_URL}/api/todos/` + todo._id, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`,
+                'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
+                'Access-Control-Allow-Methods':'*'
             }
         })
         
