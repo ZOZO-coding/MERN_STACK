@@ -6,6 +6,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import TodoForm from  '../components/Todos/TodoForm';
 import TodoItem from '../components/Todos/TodoItem';
 
+import { BASE_URL } from "../components/BASE"
+
 const Todos = () => {
     const { todos, dispatch } = useTodosContext()
 
@@ -14,7 +16,7 @@ const Todos = () => {
     useEffect(() => {
         // fetch all todo items
         const fetchTodos = async () => {
-            const response = await fetch('/api/todos', {
+            const response = await fetch(`${BASE_URL}/api/todos`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

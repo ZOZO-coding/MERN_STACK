@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNotesContext } from "../../hooks/useNotesContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+import { BASE_URL } from "../BASE"
+
 const NoteForm = () => {
     const { dispatch } = useNotesContext();
 
@@ -26,7 +28,7 @@ const NoteForm = () => {
         const note = {title, difficulty, link, content}
 
         // use the fetch api to send the post request:
-        const response = await fetch('/api/notes', {
+        const response = await fetch(`${BASE_URL}/api/notes`, {
             method: 'POST',
             // stringify changes the note object to a json string
             body:JSON.stringify(note),

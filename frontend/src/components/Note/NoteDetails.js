@@ -4,6 +4,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { BASE_URL } from "../BASE"
 
 // destructure the note from props in parent component Home, so you dont need to use props.note
 const NoteDetails = ({ note }) => {
@@ -16,7 +17,7 @@ const NoteDetails = ({ note }) => {
 
     const handleClick = async () => {
         // delete the note from database
-        const response = await fetch('/api/notes/' + note._id, {
+        const response = await fetch(`${BASE_URL}/api/notes/` + note._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`

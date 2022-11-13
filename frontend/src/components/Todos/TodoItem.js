@@ -1,6 +1,8 @@
 import { useTodosContext } from "../../hooks/useTodosContext"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
+import { BASE_URL } from "../BASE"
+
 const TodoItem = ({ todo }) => {
     const { dispatch } = useTodosContext()
 
@@ -12,7 +14,7 @@ const TodoItem = ({ todo }) => {
 
     const handleClick = async() => {
         // first delete the todo item in the database
-        const response = await fetch('/api/todos/' + todo._id, {
+        const response = await fetch(`${BASE_URL}/api/todos/` + todo._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+import { BASE_URL } from "../BASE"
+
 const NoteEditForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -20,7 +22,7 @@ const NoteEditForm = () => {
 
     useEffect(() => {
         const fetchNote = async () => {
-            const response = await fetch(`/api/notes/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/notes/${id}`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -30,7 +32,7 @@ const NoteEditForm = () => {
         }
     
         fetchNote();
-    }, [])
+    }, [id, user.token])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

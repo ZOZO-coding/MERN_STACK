@@ -7,7 +7,10 @@ import NoteDetails from '../components/Note/NoteDetails'
 import Pagination from "../components/Pagination";
 import Filter from "../components/Note/Filter";
 
+import { BASE_URL } from "../components/BASE"
+
 const Home = () => {
+
     const { notes, dispatch } = useNotesContext()
 
     const [page, setPage] = useState(1)
@@ -30,7 +33,7 @@ const Home = () => {
     useEffect(() => {
         const fetchNotes = async () => {
             // add authorization header
-            const response = await fetch(`/api/notes?page=${page}&searchTerm=${searchTerm}&difficulty=${difficulty}`, {
+            const response = await fetch(`${BASE_URL}/api/notes?page=${page}&searchTerm=${searchTerm}&difficulty=${difficulty}`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

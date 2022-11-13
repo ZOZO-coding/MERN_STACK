@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+import { BASE_URL } from "../components/BASE"
+
 // create a custom hook for signup
 export const useLogin = () => {
     const [error, setError] = useState(null)
@@ -12,7 +14,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('/api/user/login', {
+        const response = await fetch(`${BASE_URL}/api/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

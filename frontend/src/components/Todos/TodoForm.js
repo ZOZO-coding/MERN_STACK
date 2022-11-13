@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useTodosContext } from "../../hooks/useTodosContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+import { BASE_URL } from "../BASE"
+
 const TodoForm = () => {
     const { dispatch } = useTodosContext();
 
@@ -22,7 +24,7 @@ const TodoForm = () => {
         const todo = {item, priority}
         
         // fetch the api to perform add todo list item
-        const response = await fetch ('/api/todos', {
+        const response = await fetch (`${BASE_URL}/api/todos`, {
             method: 'POST',
             // stringify the object into json string
             body: JSON.stringify(todo),
@@ -35,6 +37,7 @@ const TodoForm = () => {
         const json = await response.json();
 
         if (!response.ok) {
+            console.log(error);
             setError(json.error)
         }
 

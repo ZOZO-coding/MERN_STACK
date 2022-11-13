@@ -3,6 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { BASE_URL } from "../BASE"
 
 
 const CommentDetails = ({ comment }) => {
@@ -15,7 +16,7 @@ const CommentDetails = ({ comment }) => {
 
     const handleClick = async () => {
         // delete the comment
-        const response = await fetch('/api/comments/' + comment._id, {
+        const response = await fetch(`${BASE_URL}/api/comments/` + comment._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`

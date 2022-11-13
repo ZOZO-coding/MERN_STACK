@@ -7,6 +7,8 @@ import CommentDetails from "../components/Comment/CommentDetails";
 import CommentForm from "../components/Comment/CommentForm";
 import CommentPagination from "../components/CommentPagination";
 
+import { BASE_URL } from "../components/BASE"
+
 const Comments = () => {
     // const [comments, setComments] = useState(null)
     const { comments, dispatch } = useCommentsContext()
@@ -17,7 +19,7 @@ const Comments = () => {
 
     useEffect(() => {
         const fetchComments = async () => {
-            const response = await fetch(`/api/comments?page=${page}`, {
+            const response = await fetch(`${BASE_URL}/api/comments?page=${page}`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

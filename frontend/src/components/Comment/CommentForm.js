@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useCommentsContext } from "../../hooks/useCommentsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+import { BASE_URL } from "../BASE"
+
 
 const CommentForm = () => {
     const { dispatch } = useCommentsContext();
@@ -22,7 +24,7 @@ const CommentForm = () => {
         const comment = {username, body}
 
         // use the fetch api to send the post request:
-        const response = await fetch('/api/comments', {
+        const response = await fetch(`${BASE_URL}/api/comments`, {
             method: 'POST',
             // stringify changes the note object to a json string to meet the body requirement
             body:JSON.stringify(comment),
@@ -36,6 +38,7 @@ const CommentForm = () => {
 
         // sanity check
         if (!response.ok) {
+            console.log(error)
             setError(json.error) // from the server setup
         }
 
