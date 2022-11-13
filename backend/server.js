@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json())
 app.use(morgan("dev"));
 app.use(cors({
-    origin: "https://leetcode-study.onrender.com"
+    origin: "https://zingy-parfait-4346f3.netlify.app"
 }))
 
 // logger middleware - replaced by morgan
