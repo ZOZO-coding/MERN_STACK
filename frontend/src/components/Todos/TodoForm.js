@@ -30,9 +30,7 @@ const TodoForm = () => {
             body: JSON.stringify(todo),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`,
-                'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
-                'Access-Control-Allow-Methods':'*'
+                'Authorization': `Bearer ${user.token}`
             }
         })
 

@@ -17,9 +17,7 @@ export const useLogin = () => {
         const response = await fetch(`${BASE_URL}/api/user/login`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
-                'Access-Control-Allow-Methods':'*'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({email, password})
         })

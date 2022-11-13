@@ -18,9 +18,7 @@ const Todos = () => {
         const fetchTodos = async () => {
             const response = await fetch(`${BASE_URL}/api/todos`, {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`,
-                    'Access-Control-Allow-Origin': 'https://leetcode-study.onrender.com',
-                    'Access-Control-Allow-Methods': '*'
+                    'Authorization': `Bearer ${user.token}`
                 }
             })
             const json = await response.json()

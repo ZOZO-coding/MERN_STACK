@@ -35,9 +35,7 @@ const Home = () => {
             // add authorization header
             const response = await fetch(`${BASE_URL}/api/notes?page=${page}&searchTerm=${searchTerm}&difficulty=${difficulty}`, {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`,
-                    'Access-Control-Allow-Origin':'https://leetcode-study.onrender.com',
-                    'Access-Control-Allow-Methods':'*'
+                    'Authorization': `Bearer ${user.token}`
                 }
             })
             const json = await response.json()
