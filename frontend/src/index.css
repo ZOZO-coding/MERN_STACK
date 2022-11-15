@@ -77,6 +77,48 @@ header a {
   text-decoration: none;
 }
 
+/* deleting modal pop up page */
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c4bebe;
+  padding: 10px 10px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.modal-container .modal-body {
+  color: var(--error);
+}
+
+.modal-footer {
+  display: flex;
+}
+
+.modal-footer button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Roboto";
+  cursor: pointer;
+  font-size: 1em;
+  margin: 10px, 10px;
+}
+
+.modal-body h4{
+  color: black;
+}
+
+#cancelBtn {
+  color: var(--error);
+  border-color: var(--error);
+  margin-right: 15px;
+}
+
 /* note show page */
 .note-show {
   display: flex;

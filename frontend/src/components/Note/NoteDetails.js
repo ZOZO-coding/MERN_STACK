@@ -1,6 +1,9 @@
 import { useNotesContext } from "../../hooks/useNotesContext";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useState } from 'react';
+
+import Model from '../Modal/Modal';
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -11,11 +14,14 @@ const NoteDetails = ({ note }) => {
     const { dispatch } = useNotesContext();
     const { user } = useAuthContext();
 
+    // create a state to show the modal of confirming page when deleting
+    const [openModel, setOpenModal] = useState(false)
+
     if (!user) {
         return
     }
 
-    const handleClick = async () => {
+    const handleDelete = async () => {
         // delete the note from database
         const response = await fetch(`${BASE_URL}/api/notes/` + note._id, {
             method: 'DELETE',
@@ -40,7 +46,8 @@ const NoteDetails = ({ note }) => {
             <p><strong>Difficulty: </strong>{note.difficulty}</p>
             <p><strong>Leetcode Link: </strong>{note.link}</p>
             <p>{formatDistanceToNow(new Date(note.createdAt), {addSuffix: true})}</p>
-            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            <span className="material-symbols-outlined" onClick={() => setOpenModal(true)}>delete</span>
+            {openModel && <Model setOpenModal={setOpenModal} handleDelete={handleDelete} />}
         </div>
      );
 }

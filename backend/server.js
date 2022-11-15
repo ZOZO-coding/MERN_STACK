@@ -19,9 +19,8 @@ const app = express();
 // for any incoming request, below middleware will look at the data, parse the data and attach to the req object, like "req.body", similar middleware like express.urlencoded
 app.use(express.json())
 app.use(morgan("dev"));
-app.use(cors({
-    origin: "https://zingy-parfait-4346f3.netlify.app"
-}))
+app.use(cors());
+// origin: "https://zingy-parfait-4346f3.netlify.app"
 
 // logger middleware - replaced by morgan
 // app.use((req, res, next) => {
