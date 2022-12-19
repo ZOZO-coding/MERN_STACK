@@ -17,6 +17,8 @@ const Login = () => {
         <form className="login" onSubmit={handleSubmit}>
             <h3>Log In</h3>
 
+            <p>It may take up to 30 seconds for the server to response, please be patient...</p>
+
             <label>Email:</label>
             <input 
                 type="email"
